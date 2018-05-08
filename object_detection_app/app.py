@@ -177,7 +177,8 @@ def upload():
 @app.route('/send_pic', methods=['POST'])
 def send_pic():
   img = Image.open(request.files['file']).convert('RGB')
-  detect_objects_from_pil(img)
+  res = detect_objects_from_pil(img)
+  return str(res)
 
 
 @app.route('/post', methods=['GET', 'POST'])
