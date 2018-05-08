@@ -144,7 +144,10 @@ def encode_image(image):
 
 
 def detect_objects(image_path):
-  image = Image.open(image_path).convert('RGB')
+  img = Image.open(image_path).convert('RGB')
+  return detect_objects_from_pil(img)
+
+def detect_objects_from_pil(image):
   boxes, scores, classes, num_detections = client.detect(image)
   image.thumbnail((480, 480), Image.ANTIALIAS)
 
@@ -171,6 +174,11 @@ def detect_objects(image_path):
 def upload():
   photo_form = PhotoForm(request.form)
   return render_template('upload.html', photo_form=photo_form, result={})
+
+@app.route('/send_pic', methods=['POST'])
+def send_pic():
+  img = Image.open(request.files['file']).convert('RGB')
+  detect_objects_from_pil(img)
 
 
 @app.route('/post', methods=['GET', 'POST'])
