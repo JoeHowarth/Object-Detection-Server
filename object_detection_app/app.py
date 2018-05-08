@@ -47,7 +47,6 @@ app = Flask(__name__)
 
 
 @app.before_request
-@requires_auth
 def before_request():
   pass
 
