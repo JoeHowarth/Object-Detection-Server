@@ -177,13 +177,13 @@ def upload():
 @app.route('/send_pic', methods=['POST'])
 def send_pic():
   img = Image.open(request.files['file']).convert('RGB')
-  cls = str(request.files['cls'])
+  # cls = str(request.form['cls'])
   # res = detect_objects_from_pil(img)
   boxes, scores, classes, num_detections = client.detect(image)
   cls_scores = []
   for i in range (num_detections):
-    if classes[i] == cls:
-      cls_scores.append(scores[i])
+    #if classes[i] == cls:
+    cls_scores.append(scores[i])
 
   return str(max(cls_scores))
 
