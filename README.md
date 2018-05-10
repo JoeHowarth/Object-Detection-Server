@@ -1,3 +1,12 @@
+# Based Off of TensorFlow Object Detection API demo
+
+## To run
+Follow steps below, but clone this repository instead
+
+Ensure the External IP is correct on the client side.
+
+
+-----------------------------------------------
 # TensorFlow Object Detection API demo
 
 Disclaimer: This is not an official Google product.
